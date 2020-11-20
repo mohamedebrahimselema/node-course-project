@@ -5,6 +5,7 @@ db.dropDatabase() -> delete database
 db.createCollections('posts')
 show collections 
 
+// insert one row
 db.posts.insert({
 title : 'post one ',
 body : 'body of post one',
@@ -14,3 +15,67 @@ users : {
           age : 12
         }
 })
+
+// insert many 
+db.posts.insertMany([
+{
+},
+{
+}
+])
+
+
+// show all table data
+db.posts.find()
+
+// pretty table
+db.posts.find().pretty()
+
+// sort 1 for تصاعدي   and -1 for desc
+db.posts.find().sort({ titles : 1 }).pretty()
+
+// count how many news
+db.posts.find({ category : 'News' }).count()
+
+// limit how many news
+db.posts.find({ category : 'News' }).limit(2)
+
+// for each
+db.posts.find().foreach(funtion(doc){
+       print('blog post : ' + doc.title)
+       })
+
+
+// find one 
+db.posts.findOne({ category : 'News' })
+
+// update
+db.posts.update({title:'post'} , 
+        { 
+             title : 'post two',
+             body : 'new oias'
+        }
+)
+
+// update by increment value
+db.posts.update ({title : 'post one ' } , {$inc : {likes : 2 }} )
+
+//rename key 
+db.post.update({title : 'post one'} , { $rename : {likes : 'views'} })
+
+// delete
+db.posts.remove({title :  'post four'})
+
+// search in array of objects
+db.posts.find({
+        comments : {  
+                    $elemMatch : { 
+                              user : 'Mary williams'
+                                }
+                   }
+             })
+
+// find greater than
+db.posts.find({ views: {$gt : 3 } })
+
+
