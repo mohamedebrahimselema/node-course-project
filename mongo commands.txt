@@ -1,0 +1,16 @@
+show dbs  -> show databases
+use test1 -> switch to db test1
+show collections -> show tables 
+db.dropDatabase() -> delete database
+db.createCollections('posts')
+show collections 
+
+db.posts.insert({
+title : 'post one ',
+body : 'body of post one',
+data : Date(),
+users : {
+          name : "moka",
+          age : 12
+        }
+})
