@@ -2,11 +2,17 @@ const express = require('express');
 const dotenv = require('dotenv');
 const logger = require('./middelware/logger');
 const morgan = require('morgan');
+const color = require('colors');
 const connectDB = require('./config/db');
 
 // load env vars
 dotenv.config({ path: './config/config.env'});
 const app = express();
+
+
+// Body parser
+app.use(express.json());
+
 
 //connect database
 connectDB();

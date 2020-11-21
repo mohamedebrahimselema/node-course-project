@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-const slugify = require('slugify');
-const geocoder = require('../utils/geocoder');
 
 const BootcampSchema = new mongoose.Schema(
   {
@@ -74,40 +72,6 @@ const BootcampSchema = new mongoose.Schema(
       min: [1, 'Rating must be at least 1'],
       max: [10, 'Rating must can not be more than 10']
     },
-    averageCost: Number,
-    photo: {
-      type: String,
-      default: 'no-photo.jpg'
-    },
-    housing: {
-      type: Boolean,
-      default: false
-    },
-    jobAssistance: {
-      type: Boolean,
-      default: false
-    },
-    jobGuarantee: {
-      type: Boolean,
-      default: false
-    },
-    acceptGi: {
-      type: Boolean,
-      default: false
-    },
-    createdAt: {
-      type: Date,
-      default: Date.now
-    },
-    user: {
-      type: mongoose.Schema.ObjectId,
-      ref: 'User',
-      required: true
-    }
-  },
-  {
-    toJSON: { virtuals: true },
-    toObject: { virtuals: true }
   }
 );
 
